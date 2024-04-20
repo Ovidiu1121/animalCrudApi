@@ -1,0 +1,10 @@
+﻿insert into animal (id, name, age, weight) values (1, 'Pavo cristatus', 4, 48);
+insert into animal (id, name, age, weight) values (2, 'Deroptyus accipitrinus', 10, 24);
+insert into animal (id, name, age, weight) values (3, 'Trichechus inunguis', 5, 43);
+insert into animal (id, name, age, weight) values (4, 'Ovis canadensis', 2, 21);
+insert into animal (id, name, age, weight) values (5, 'Anas platyrhynchos', 2, 14);
+insert into animal (id, name, age, weight) values (6, 'Hymenolaimus malacorhynchus', 4, 28);
+insert into animal (id, name, age, weight) values (7, 'Picoides pubescens', 6, 24);
+insert into animal (id, name, age, weight) values (8, 'Odocoilenaus virginianus', 4, 36);
+insert into animal (id, name, age, weight) values (9, 'Crocodylus niloticus', 3, 15);
+insert into animal (id, name, age, weight) values (10, 'Ammospermophilus nelsoni', 5, 42);

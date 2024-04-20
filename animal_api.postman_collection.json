@@ -1,0 +1,18 @@
+{
+	"info": {
+		"_postman_id": "c9679a9a-1cce-45df-a36a-fb967d6d1bd8",
+		"name": "animal_api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33660681"
+	},
+	"item": [
+		{
+			"name": "GetAllAnimals",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
