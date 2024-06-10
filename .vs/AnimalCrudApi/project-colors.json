@@ -5,7 +5,12 @@
       "ProjectGuid": "2177114e-8f97-4a58-817a-c66f98c7621f",
       "DisplayName": "AnimalCrudApi",
       "ColorIndex": 0
+    },
+    "1e148b12-10f8-42f9-b5b5-7a233cc31348": {
+      "ProjectGuid": "1e148b12-10f8-42f9-b5b5-7a233cc31348",
+      "DisplayName": "tests",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }
