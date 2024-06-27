@@ -10,6 +10,7 @@ namespace AnimalCrudApi.Mappings
         {
             CreateMap<CreateAnimalRequest, Animal>();
             CreateMap<UpdateAnimalRequest, Animal>();
+            CreateMap<AnimalDto, Animal>().ReverseMap();
         }
 
 

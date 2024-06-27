@@ -16,9 +16,9 @@ namespace AnimalCrudApi.Animals.Service
             _repository = repository;
         }
 
-        public async Task<Animal> CreateAnimal(CreateAnimalRequest animalRequest)
+        public async Task<AnimalDto> CreateAnimal(CreateAnimalRequest animalRequest)
         {
-            Animal animal = await _repository.GetByNameAsync(animalRequest.Name);
+            AnimalDto animal = await _repository.GetByNameAsync(animalRequest.Name);
 
             if (animal!=null)
             {
@@ -29,9 +29,9 @@ namespace AnimalCrudApi.Animals.Service
             return animal;
         }
 
-        public async Task<Animal> DeleteAnimal(int id)
+        public async Task<AnimalDto> DeleteAnimal(int id)
         {
-            Animal animal = await _repository.GetByIdAsync(id);
+            AnimalDto animal = await _repository.GetByIdAsync(id);
 
             if (animal==null)
             {
@@ -42,9 +42,9 @@ namespace AnimalCrudApi.Animals.Service
             return animal;
         }
 
-        public async Task<Animal> UpdateAnimal(int id,UpdateAnimalRequest animalRequest)
+        public async Task<AnimalDto> UpdateAnimal(int id,UpdateAnimalRequest animalRequest)
         {
-            Animal animal = await _repository.GetByIdAsync(id);
+            AnimalDto animal = await _repository.GetByIdAsync(id);
 
             if (animal==null)
             {

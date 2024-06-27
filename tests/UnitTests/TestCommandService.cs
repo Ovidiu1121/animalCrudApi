@@ -82,7 +82,7 @@ namespace tests.UnitTests
                 Weight=120
             };
 
-            _mock.Setup(repo => repo.GetByIdAsync(1)).ReturnsAsync((Animal)null);
+            _mock.Setup(repo => repo.GetByIdAsync(1)).ReturnsAsync((AnimalDto)null);
 
             var exception = await Assert.ThrowsAsync<ItemDoesNotExist>(() => _service.UpdateAnimal(1, update));
 
@@ -118,7 +118,7 @@ namespace tests.UnitTests
         public async Task Delete_ItemDoesNotExist()
         {
 
-            _mock.Setup(repo => repo.DeleteAnimalById(It.IsAny<int>())).ReturnsAsync((Animal)null);
+            _mock.Setup(repo => repo.DeleteAnimalById(It.IsAny<int>())).ReturnsAsync((AnimalDto)null);
 
             var exception = await Assert.ThrowsAsync<ItemDoesNotExist>(() => _service.DeleteAnimal(1));
 

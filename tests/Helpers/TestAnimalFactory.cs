@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AnimalCrudApi.Dto;
 
 namespace tests.Helpers
 {
     public class TestAnimalFactory
     {
-        public static Animal CreateAnimal(int id)
+        public static AnimalDto CreateAnimal(int id)
         {
-            return new Animal
+            return new AnimalDto
             {
                 Id = id,
                 Name="Ana"+id,
@@ -20,13 +21,13 @@ namespace tests.Helpers
             };
         }
 
-        public static List<Animal> CreateAnimals(int count)
+        public static ListAnimalDto CreateAnimals(int count)
         {
-            List<Animal> animals = new List<Animal>();
+            ListAnimalDto animals = new ListAnimalDto();
 
             for (int i = 0; i<count; i++)
             {
-                animals.Add(CreateAnimal(i));
+                animals.animalList.Add(CreateAnimal(i));
             }
             return animals;
         }

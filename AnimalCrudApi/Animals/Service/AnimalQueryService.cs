@@ -1,6 +1,7 @@
 ﻿using AnimalCrudApi.Animals.Model;
 using AnimalCrudApi.Animals.Repository.interfaces;
 using AnimalCrudApi.Animals.Service.Interfaces;
+using AnimalCrudApi.Dto;
 using AnimalCrudApi.System.Constant;
 using AnimalCrudApi.System.Exceptions;
 
@@ -16,11 +17,11 @@ namespace AnimalCrudApi.Animals.Service
             _repository = repository;
         }
 
-        public async Task<IEnumerable<Animal>> GetAll()
+        public async Task<ListAnimalDto> GetAll()
         {
-            IEnumerable<Animal> animals = await _repository.GetAllAsync();
+            ListAnimalDto animals = await _repository.GetAllAsync();
 
-            if (animals.Count().Equals(0))
+            if (animals.animalList.Count().Equals(0))
             {
                 throw new ItemDoesNotExist(Constants.NO_ANIMALS_EXIST);
             }
@@ -28,9 +29,9 @@ namespace AnimalCrudApi.Animals.Service
             return animals;
         }
 
-        public async Task<Animal> GetById(int id)
+        public async Task<AnimalDto> GetById(int id)
         {
-            Animal animal = await _repository.GetByIdAsync(id);
+            AnimalDto animal = await _repository.GetByIdAsync(id);
 
             if (animal == null)
             {
@@ -40,9 +41,9 @@ namespace AnimalCrudApi.Animals.Service
             return animal;
         }
 
-        public async Task<Animal> GetByName(string name)
+        public async Task<AnimalDto> GetByName(string name)
         {
-            Animal animal = await _repository.GetByNameAsync(name);
+            AnimalDto animal = await _repository.GetByNameAsync(name);
 
             if (animal == null)
             {

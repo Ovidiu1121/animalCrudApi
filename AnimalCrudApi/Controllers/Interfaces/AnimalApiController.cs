@@ -11,28 +11,33 @@ namespace AnimalCrudApi.Controllers.Interfaces
         [HttpGet("all")]
         [ProducesResponseType(statusCode: 200, type: typeof(IEnumerable<Animal>))]
         [ProducesResponseType(statusCode: 404, type: typeof(String))]
-        public abstract Task<ActionResult<IEnumerable<Animal>>> GetAll();
+        public abstract Task<ActionResult<ListAnimalDto>> GetAll();
 
         [HttpPost("create")]
         [ProducesResponseType(statusCode: 201, type: typeof(Animal))]
         [ProducesResponseType(statusCode: 400, type: typeof(String))]
-        public abstract Task<ActionResult<Animal>> CreateAnimal([FromBody] CreateAnimalRequest animalRequest);
+        public abstract Task<ActionResult<AnimalDto>> CreateAnimal([FromBody] CreateAnimalRequest animalRequest);
 
         [HttpPut("update/{id}")]
         [ProducesResponseType(statusCode: 202, type: typeof(Animal))]
         [ProducesResponseType(statusCode: 400, type: typeof(String))]
         [ProducesResponseType(statusCode: 404, type: typeof(String))]
-        public abstract Task<ActionResult<Animal>> UpdateAnimal([FromRoute] int id, [FromBody] UpdateAnimalRequest animalRequest);
+        public abstract Task<ActionResult<AnimalDto>> UpdateAnimal([FromRoute] int id, [FromBody] UpdateAnimalRequest animalRequest);
 
         [HttpDelete("delete/{id}")]
         [ProducesResponseType(statusCode: 202, type: typeof(Animal))]
         [ProducesResponseType(statusCode: 404, type: typeof(String))]
-        public abstract Task<ActionResult<Animal>> DeleteAnimal([FromRoute] int id);
+        public abstract Task<ActionResult<AnimalDto>> DeleteAnimal([FromRoute] int id);
 
-        [HttpGet("{name}")]
+        [HttpGet("name/{name}")]
         [ProducesResponseType(statusCode: 202, type: typeof(Animal))]
         [ProducesResponseType(statusCode: 404, type: typeof(String))]
-        public abstract Task<ActionResult<Animal>> GetByNameRoute([FromRoute] string name);
+        public abstract Task<ActionResult<AnimalDto>> GetByNameRoute([FromRoute] string name);
+        
+        [HttpGet("id/{id}")]
+        [ProducesResponseType(statusCode: 202, type: typeof(Animal))]
+        [ProducesResponseType(statusCode: 404, type: typeof(String))]
+        public abstract Task<ActionResult<AnimalDto>> GetByIdRoute([FromRoute] int id);
 
 
 

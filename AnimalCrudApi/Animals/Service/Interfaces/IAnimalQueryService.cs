@@ -1,11 +1,12 @@
 ﻿using AnimalCrudApi.Animals.Model;
+using AnimalCrudApi.Dto;
 
 namespace AnimalCrudApi.Animals.Service.Interfaces
 {
     public interface IAnimalQueryService
     {
-        Task<IEnumerable<Animal>> GetAll();
-        Task<Animal> GetByName(string name);
-        Task<Animal> GetById(int id);
+        Task<ListAnimalDto> GetAll();
+        Task<AnimalDto> GetByName(string name);
+        Task<AnimalDto> GetById(int id);
     }
 }

@@ -55,9 +55,9 @@ namespace tests.UnitTests
 
             var result = await _controller.GetAll();
             var okresult = Assert.IsType<OkObjectResult>(result.Result);
-            var animalsAll = Assert.IsType<List<Animal>>(okresult.Value);
+            var animalsAll = Assert.IsType<ListAnimalDto>(okresult.Value);
 
-            Assert.Equal(5, animalsAll.Count);
+            Assert.Equal(5, animalsAll.animalList.Count);
             Assert.Equal(200, okresult.StatusCode);
 
         }
@@ -105,9 +105,9 @@ namespace tests.UnitTests
 
             var result = await _controller.CreateAnimal(create);
 
-            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var okResult = Assert.IsType<CreatedResult>(result.Result);
 
-            Assert.Equal(okResult.StatusCode, 200);
+            Assert.Equal(okResult.StatusCode, 201);
             Assert.Equal(animal, okResult.Value);
 
         }

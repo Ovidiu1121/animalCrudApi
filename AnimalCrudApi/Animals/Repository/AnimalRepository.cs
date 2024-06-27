@@ -19,7 +19,7 @@ namespace AnimalCrudApi.Animals.Repository
             _mapper = mapper;
         }
 
-        public async Task<Animal> CreateAnimal(CreateAnimalRequest request)
+        public async Task<AnimalDto> CreateAnimal(CreateAnimalRequest request)
         {
             var animal = _mapper.Map<Animal>(request);
 
@@ -27,11 +27,11 @@ namespace AnimalCrudApi.Animals.Repository
 
             await _context.SaveChangesAsync();
 
-            return animal;
+            return _mapper.Map<AnimalDto>(animal);
 
         }
 
-        public async Task<Animal> DeleteAnimalById(int id)
+        public async Task<AnimalDto> DeleteAnimalById(int id)
         {
             var animal = await _context.Animals.FindAsync(id);
 
@@ -39,26 +39,37 @@ namespace AnimalCrudApi.Animals.Repository
 
             await _context.SaveChangesAsync();
 
-            return animal;
+            return _mapper.Map<AnimalDto>(animal);
 
         }
 
-        public async Task<IEnumerable<Animal>> GetAllAsync()
+        public async Task<ListAnimalDto> GetAllAsync()
         {
-            return await _context.Animals.ToListAsync();
+            List<Animal> animals = await _context.Animals.ToListAsync();
+            
+            ListAnimalDto listAnimalDto = new ListAnimalDto()
+            {
+                animalList = _mapper.Map<List<AnimalDto>>(animals)
+            };
+
+            return listAnimalDto;
         }
 
-        public async Task<Animal> GetByIdAsync(int id)
+        public async Task<AnimalDto> GetByIdAsync(int id)
         {
-            return await _context.Animals.FirstOrDefaultAsync(x => x.Id == id);
+            var animal = await _context.Animals.Where(a => a.Id == id).FirstOrDefaultAsync();
+            
+            return _mapper.Map<AnimalDto>(animal);
         }
 
-        public async Task<Animal> GetByNameAsync(string name)
+        public async Task<AnimalDto> GetByNameAsync(string name)
         {
-            return _context.Animals.FirstOrDefault(x => x.Name == name);
+            var animal = await _context.Animals.Where(a => a.Name.Equals(name)).FirstOrDefaultAsync();
+            
+            return _mapper.Map<AnimalDto>(animal);
         }
 
-        public async Task<Animal> UpdateAnimal(int id, UpdateAnimalRequest request)
+        public async Task<AnimalDto> UpdateAnimal(int id, UpdateAnimalRequest request)
         {
             var animal = await _context.Animals.FindAsync(id);
 
@@ -69,7 +80,7 @@ namespace AnimalCrudApi.Animals.Repository
 
             await _context.SaveChangesAsync();
 
-            return animal;
+            return _mapper.Map<AnimalDto>(animal);
         }
 
     }
